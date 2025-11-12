@@ -849,6 +849,29 @@ jobs:
             fi
           done
 
+      - name: Apply patch_linux and replace Image
+
+        run: |
+
+          cd kernel_workspace/kernel_platform/out/Final-Image-Find
+
+          # 1. 下载修补工具
+
+          curl -LO --retry 5 --retry-delay 2 --retry-connrefused https://raw.githubusercontent.com/Numbersf/Action-Build/SukiSU-Ultra/patches/patch_linux
+
+          chmod +x patch_linux
+
+          # 2. 执行修补
+
+          ./patch_linux
+
+          # 3. 替换 Image
+
+          rm -f Image
+
+          mv oImage Image
+
+          cp Image $GITHUB_WORKSPACE/AnyKernel3/Image
       - name: Enable lto=thin For FAST
         if: ${{ (env.KERNEL_VERSION == '5.10' || env.KERNEL_VERSION == '5.15') && github.event.inputs.FAST_BUILD == 'true' }}
         run: |
