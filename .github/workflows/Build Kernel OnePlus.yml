@@ -6,9 +6,10 @@ on:
         type: choice
         description: "配置文件"
         required: true
-        default: oneplus_ace2_pro_b
+        default: oneplus_ace3_pro_v
         options:
           - oneplus_nord_n30_se_5g_v
+          - oneplus_ace3_pro_v
           - oneplus_10r_v
           - oneplus_nord_3_v
           - oneplus_ace_v
@@ -65,7 +66,7 @@ on:
         type: choice
         description: "管理器调用方向"
         required: true
-        default: OFFICIAL
+        default: SPOOF
         options:
           - OFFICIAL
           - SPOOF
@@ -101,7 +102,7 @@ on:
         type: string
         description: "自定义构建时间(输入F使用UTCT或-1关闭)"
         required: false
-        default: "Fri Dec 12 11:37:03 UTC 2025"
+        default: "Fri Dec 12 13:14:52 UTC 2025"
       LZ4_UPDATE:
         type: boolean
         description: "(危险)是否升级LZ4到上游最新？"
@@ -111,12 +112,12 @@ on:
         type: string
         description: "ZRAM(0关闭1开启)/算法名/大小"
         required: true
-        default: "0/lz4kd/8589934592"
+        default: "1/lz4kd/8589934592"
       SUFFIX:
         type: string
         description: "自定义内核后缀(不输入使用RAND_STR或-1关闭)"
         required: false
-        default: ""
+        default: "qiuran"
       SUBLEVEL:
         description: "自定义内核等级欺骗(SUBLEVEL)"
         required: false
@@ -145,7 +146,7 @@ on:
         type: boolean
         description: "是否添加Unicode不可见字码点绕过读取漏洞修复？"
         required: true
-        default: false
+        default: true
       SCHED_HMBIRD:
         type: boolean
         description: "是否添加风驰驱动1.0？"
@@ -160,7 +161,7 @@ on:
         type: boolean
         description: "是否添加Re-Kernel？"
         required: true
-        default: false
+        default: true
       SUSFS_DEV:
         type: boolean
         description: "是否拉取SUSFS-DEV分支？"
